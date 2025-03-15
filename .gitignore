@@ -1,0 +1,15 @@
+.idea
+/project_1/prime/db/
+/project_1/prime/incremental_db/
+/project_1/prime/output_files/
+/project_1/prime/simulation/
+/project_1/prime/work-obj93.cf
+/project_1/prime_extension/db/
+/project_1/prime_extension/incremental_db/
+/project_1/prime_extension/output_files/
+/project_1/prime_extension/simulation/
+/project_1/traffic/db/
+/project_1/traffic/greybox_tmp/
+/project_1/traffic/incremental_db/
+/project_1/traffic/output_files/
+/project_1/traffic/simulation/
