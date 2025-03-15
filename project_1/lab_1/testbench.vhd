@@ -1,4 +1,4 @@
--- Stephanie Taylor
+-- Stephanie Taylor (Colby College CS Department)
 -- Fall 2020
 -- CS 232 Lab 1
 -- Test file for the simple circuit in lab 1
