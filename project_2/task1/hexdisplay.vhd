@@ -1,6 +1,7 @@
 -- Francis O'Hara
 -- Spring 2025
 -- CS232 Project 2
+-- A 7-segment display driver for the Altera DE0 board's 7-segment dispalsy that allows displaying the hexadecimal digits 0-F.
 
 library ieee;
 use ieee.std_logic_1164.all;
