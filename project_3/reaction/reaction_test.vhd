@@ -1,8 +1,7 @@
 -- Francis O'Hara
 -- Spring 2025
 -- CS 232 Project 3 Extensioin
--- Test bench for the reaction timer state machine circuit
---
+-- Test file for the reaction timer state machine circuit
 
 library ieee;
 use ieee.std_logic_1164.all;
