@@ -1,7 +1,8 @@
 -- Francis O'Hara
 -- Spring 2025
 -- CS 232 Project 4
--- An improvement on the ROM memory component for the programmable light display circuit that can store 32 instructions instead of 16.
+-- An improvement on the ROM memory component for the programmable light display circuit that can
+-- 		store 32 instructions instead of 16 by using an address size of 5 bits.
 
 -- The first 16 instructions turn on the rightmost LED, shifts it until it reaches the leftmost LED,
 -- 		shifts it back until it reaches the rightmost position, and then turns off all LEDs.
