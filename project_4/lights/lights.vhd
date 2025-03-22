@@ -14,8 +14,8 @@ entity lights is
 		clk		: in	std_logic;
 		reset	 	: in	std_logic;
 		lightsig : out std_logic_vector(7 downto 0); 
-		IRView 	: out std_logic_vector(2 downto 0);
-		PCView 	: out unsigned (3 downto 0)
+		IRview 	: out std_logic_vector(2 downto 0);
+		PCview 	: out unsigned (3 downto 0)
 	);
 
 end entity;
