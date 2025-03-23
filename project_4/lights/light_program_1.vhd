@@ -3,8 +3,8 @@
 -- CS 232 Project 4
 -- ROM memory component for a programmable light display circuit.
 
--- The program stored on this ROM turns on the rightmost light, shifts it until it reaches the far left,
--- shifts it back to the far right, turns all lights off, and turns all lights on. 
+-- The program stored on this ROM turns on the rightmost light, shifts it until it reaches the far left, and
+-- shifts it back to the far right.
 
 library ieee;
 use ieee.std_logic_1164.all;
