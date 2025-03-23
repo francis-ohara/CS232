@@ -5,7 +5,7 @@
 
 -- The program stored on this ROM turns on all lights, turns off the rightmost light,
 -- shifts the turned off light until it reaches the far left, and shifts the turned off light back
--- until it reaches the second light from the left.
+-- until it reaches the second light from the far left.
 
 library ieee;
 use ieee.std_logic_1164.all;
