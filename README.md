@@ -88,11 +88,61 @@ CS232
 │       ├── shortest_reaction_time.bdf
 │       ├── shortest_reaction_time.vhd
 │       └── shortest_reaction_timer.vhd
-└── project_4
-    └── calc
-        ├── README.md
-        ├── alu.vhd
-        ├── calc.vhd
-        └── calcbench.vhd
+├── project_4
+│   ├── calc
+│   │   ├── README.md
+│   │   ├── alu.vhd
+│   │   ├── calc.vhd
+│   │   └── calcbench.vhd
+│   ├── larger_lightrom_extension
+│   │   ├── larger_lightrom.vhd
+│   │   └── larger_lightrom_extension.vhd
+│   ├── lights
+│   │   ├── light_program_1.vhd
+│   │   ├── light_program_2.vhd
+│   │   ├── lightrom.vhd
+│   │   ├── lights.vhd
+│   │   └── lightsbench.vhd
+│   └── pcview_irview_extension
+│       ├── hexdisplay.vhd
+│       ├── lightrom.vhd
+│       └── pcview_irview_extension.vhd
+├── project_5
+│   └── larger_pldrom_extension
+│       ├── larger_pldrom.vhd
+│       └── larger_pldrom_extension.vhd
+├── project_6
+│   ├── calculator
+│   │   └── calculator.vhd
+│   └── stack_overflow_underflow_extension
+│       ├── calculator.vhd
+│       ├── hexdisplay.vhd
+│       └── memram.vhd
+└── project_7
+    ├── README.md
+    ├── cpu
+    │   ├── DataRAM.vhd
+    │   ├── ProgramRom.vhd
+    │   ├── alu.vhd
+    │   ├── alutestbench.vhd
+    │   ├── cpu.vhd
+    │   ├── cpubench.vhd
+    │   ├── data.mif
+    │   ├── fibonnaci.mif
+    │   ├── program.mif
+    │   ├── testcall.mif
+    │   ├── testpush.mif
+    │   └── unsigned_multiply.mif
+    └── screenshots
+        ├── alutestbench.png
+        ├── cpubench_1.png
+        ├── cpubench_2.png
+        ├── cpubench_3.png
+        ├── cpubench_4.png
+        ├── fibonnaci.png
+        ├── testcall.png
+        ├── testpush.png
+        └── unsigned_multiply.png
+
 
 ```
