@@ -1,0 +1,158 @@
+-- program memory file for testcall.a
+DEPTH = 256;
+WIDTH = 16;
+ADDRESS_RADIX = HEX;
+DATA_RADIX = BIN;
+CONTENT
+BEGIN
+00 : 1111100000011000; -- Move 3 to RA
+01 : 1111100000100001; -- Move 4 to RB
+02 : 0100000000000000; -- Push RA
+03 : 0100000000000000; -- Push RA
+04 : 0100001000000000; -- Push RB
+05 : 0011010000001011; -- CALL code at address 0x0B
+06 : 0101010000000000; -- Pop RC
+07 : 0101010000000000; -- Pop RC
+08 : 0101010000000000; -- Pop RC
+09 : 0110010000000000; -- Store RC to Output
+0A : 0011110000000000; -- exit
+0B : 0100100000000000; -- Push RE
+0C : 1111010100000100; -- Move stack pointer (SP) to RE
+0D : 0100000000000000; -- Push RA
+0E : 0100001000000000; -- Push RB
+0F : 0000100011111101; -- Load 253+RE from RAM to destination RA
+10 : 0000100111111100; -- Load 252+RE from RAM to restination RB
+11 : 1000000001000000; -- Add RA + RB --> RA
+12 : 0001100011111011; -- Store to RAM: RA into address at 251+RE
+13 : 0101001000000000; -- Pop RB
+14 : 0101000000000000; -- Pop RA
+15 : 0101100000000000; -- Pop RE
+16 : 0011100000000000; -- return
+[17..FF] : 1111111111111111;
+END
+
+-- Opcode = move, T=1 (immediate),  3, dest = RA
+-- 00 : 1111 1 00000011 000; -- Move 3 to RA
+
+-- Opcode = move, T=1, 4, dest = RB
+-- 01 : 1111 1 00000100 001; -- Move 4 to RB
+
+-- opcode = push, src=RA, unused   
+-- 02 : 0100 000, 000000000; -- Push RA
+
+-- opcode = push, src = RA, unused
+-- 03 : 0100 000 000000000; -- Push RA
+
+-- opcode = push, src=RB, unused
+-- 04 : 0100 001 000000000; -- Push RB
+
+-- opcode = call, unused, addr=0x0B (11)
+-- 05 : 001101 00 00001011; -- CALL code at address 0x0B
+
+-- opcode = pop, src=RC, unused
+-- 06 : 0101 010 000000000; -- Pop RC
+
+-- opcode = pop, src=RC, unused
+-- 07 : 0101 010 000000000; -- Pop RC
+
+-- opcode = pop, src=RC, unused
+-- 08 : 0101 010 000000000; -- Pop RC
+
+-- opcode = output, src=RC, unused
+-- 09 : 0110 010 000000000; -- Store RC to Output
+
+-- opcode = exit
+-- 0A : 001111 0000000000; -- exit
+
+-- opcode=push, src=RE, unused
+-- 0B : 0100 100 000000000; -- Push RE
+
+-- opcode = move,  T=0, src=SP, unused, dst=RE
+-- 0C : 1111 0 101 00000 100; -- Move stack pointer (SP) to RE
+
+-- opcode = push, src=RC, unused 
+-- 0D : 0100 000 000000000; -- Push RA
+
+-- opcode = push, src=RB, unused
+-- 0E : 0100 001 000000000; -- Push RB
+
+-- opcode=Load from RAM, R=addE, dest=RA, immediate=0xFD, so we load what is at ram address RE+253  to RA
+-- 0F : 0000 1 000 11111101; -- Load 253+RE from RAM to destination RA
+
+-- opcode =load from RAM, R=addE, dest=RB, immediate=0xFC, so we load what is at ram address RE+252 to RB
+-- 10 : 0000 1 001 11111100; -- Load 252+RE from RAM to restination RB
+
+-- opcode=add, srcA=RA, srcB=RB, unused, dest=RA
+-- 11 : 1000 000 001 000 000; -- Add RA + RB --> RA
+
+-- opcode=store to RAM, R=addE, SRC=RA, addr=0xFB, so we put contents of RA into RAM address RA+251
+-- 12 : 0001 1 000 11111011; -- Store to RAM: RA into address at 251+RE
+
+-- opcode=pop, src=RB, unused
+-- 13 : 0101 001 000000000; -- Pop RB
+
+-- opcode=pop, src=RA, unused
+-- 14 : 0101 000 000000000; -- Pop RA
+
+-- opcode=pop, src=RE, unused
+-- 15 : 0101 100 000000000; -- Pop RE
+
+-- opcode=return, unused (pop address)
+-- 16 : 001110 0000000000; -- Exit
+
+--------------------------------------------------
+
+-- 00 : 1111100000011000; -- Move 3 to RA           RA=3
+-- 01 : 1111100000100001; -- Move 4 to RB           RA=3, RB=4
+-- 02 : 0100000000000000; -- Push RA                  RA=3,RB=4,stack=3
+-- 03 : 0100000000000000; -- Push RA                  RA=3,RB=4,stack=3,3
+-- 04 : 0100001000000000; -- Push RB                  RA=3,RB=4,stack=3,3,4
+-- 05 : 0011010000001011; -- CALL code at address 0x0B
+-- 06 : 0101010000000000; -- Pop RC
+-- 07 : 0101010000000000; -- Pop RC
+-- 08 : 0101010000000000; -- Pop RC
+-- 09 : 0110010000000000; -- Store RC to Output
+-- 0A : 0011110000000000; -- exit
+-- 0B : 0100100000000000; -- Push RE
+-- 0C : 1111010100000100; -- Move stack pointer (SP) to RE
+-- 0D : 0100000000000000; -- Push RA
+-- 0E : 0100001000000000; -- Push RB
+-- 0F : 0000100011111101; -- Load 253+RE from RAM to destination RA
+-- 10 : 0000100111111100; -- Load 252+RE from RAM to restination RB
+-- 11 : 1000000001000000; -- Add RA + RB --> RA
+-- 12 : 0001100011111011; -- Store to RAM: RA into address at 251+RE
+-- 13 : 0101001000000000; -- Pop RB
+-- 14 : 0101000000000000; -- Pop RA
+-- 15 : 0101100000000000; -- Pop RE
+-- 16 : 0011100000000000; -- return
+
+-- PC, SP, Values
+-- 00, 0, RA=3 
+-- 01, 0, RA=3, RB=4
+-- 02, 1, RA=3,RB=4,stack=3
+-- 03, 2, RA=3,RB=4,stack=3,3
+-- 04, 3, RA=3,RB=4,stack=3,3,4
+-- 05, 4, RA=3,RB=4,stack=3,3,4,(6,CR)
+-- 0B, 5, RA=3,RB=4,stack=3,3,4,(6,CR),RE (But what is RE's value????? -- doesn't matter because we are just saving it..)
+-- 0C, 5, RA=3,RB=4,RE=5,stack=3,3,4,(6,CR),REundef
+-- 0D, 6, RA=3,RB=4,RE=5,stack=3,3,4,(6,CR),REundef,3
+-- 0E, 7, RA=3,RB=4,RE=5,stack=3,3,4,(6,CR),REundef,3,4
+-- 0F, 7, RA=4,RB=4,RE=5,stack=3,3,4,(6,CR),REundef,3,4   (load to RA from RAM address 5+FD=2)
+-- 10, 7, RA=4,RB=3,RE=5,stack=3,3,4,(6,CR),REundef,3,4   (load to RB from RAM address 5+FC=1)
+-- 11, 7, RA=7,RB=3,RE=5,stack=3,3,4,(6,CR),REundef,3,4
+-- 12, 7, RA=7,RB=3,RE=5,stack=7,3,4,(6,CR),REundef,3,4  (store RA to RAM address 5+FB=0)
+-- 13, 6, RA=7,RB=4,RE=5,stack=7,3,4,(6,CR),REundef,3
+-- 14, 5, RA=3,RB=4,RE=5,stack=7,3,4,(6,CR),REundef
+-- 15, 4, RA=3,RB=4,RE=REundef,stack=7,3,4,(6,CR)
+-- 16, 3, RA=3,RB=4,RE=REundef,stack=7,3,4
+-- 06, 2, RA=3,RB=4,RC=4,RE=REundef,stack=7,3
+-- 07, 1, RA=3,RB=4,RC=3,RE=REundef,stack=7
+-- 08, 0, RA=3,RB=4,RC=7,RE=REundef,stack=
+-- 09, 0, RA=3,RB=4,RC=7,RE=REundef
+-- 0A... exit
+
+-- 0xFD +
+-- 0x05
+-- =
+-- 0x02
+

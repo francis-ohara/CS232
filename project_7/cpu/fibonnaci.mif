@@ -1,0 +1,28 @@
+-- CS232 Project 7
+-- Francis O'Hara
+-- Spring 2025
+
+-- program memory file for fibonacci program.
+-- The program stored on this memory file computes the first 10 numbers in the fibonacci sequence.
+
+DEPTH = 256;
+WIDTH = 16;
+ADDRESS_RADIX = HEX;
+DATA_RADIX = BIN;
+CONTENT
+BEGIN
+00 : 1111100000000000; -- move 0 to RA (0th Fibonacci number)
+01 : 1111100000001001; -- move 1 to RB (1th Fibonacci number)
+02 : 1111100001000011; -- move 8 to RD (defines loop counter variable for computing next 8 numbers in Fibonacci sequence)
+03 : 1111100000001100; -- move 1 to RE (RE is constant 1 for decrementing loop counter variable in each iteration)
+-- loop body begins
+04 : 1000000001000010; -- add RA to RB, and store in RC (computes next Fibonacci number)
+05 : 1111000100000000; -- move RB to RA
+06 : 1111001000000001; -- move RC to RB
+07 : 1001011100000011; -- subtract 1 from RD and store in RD (decrement loop counter variable)
+-- loop body ends
+08 : 0011000000001010; -- conditional branch to address 0A (end of program) if RD (the loop variable) is 0
+09 : 0010000000000100; -- unconditional branch to address 04 (beginning of loop body)
+0A : 0011110000000000; -- halt
+[0B..FF] : 1111111111111111;    -- fill remaining address locations with all 1s
+END

@@ -1,0 +1,21 @@
+-- program memory file for testpush.a
+DEPTH = 256;
+WIDTH = 16;
+ADDRESS_RADIX = HEX;
+DATA_RADIX = BIN;
+CONTENT
+BEGIN
+00 : 1111100000001000; -- move 1 to RA
+01 : 1111100000010001; -- move 2 to RB
+02 : 1111100000011010; -- move 3 to RC
+03 : 0100000000000000; -- push 1 to location 0 on the stack
+04 : 0100001000000000; -- push 2 to location 1 on the stack
+05 : 0100010000000000; -- push 3 to location 2 on the stack
+06 : 0000001100000000; -- load 1 to RD i.e. from location 0
+07 : 0000010000000001; -- load 2 to RE i.e. from location 1
+08 : 0000000000000010; -- load 3 to RA i.e. from location 2
+09 : 0101001000000000; -- pop 3 to RB
+0A : 0101000000000000; -- pop 2 to RA
+0B : 0101010000000000; -- pop 1 to RC
+[0C..FF] : 1111111111111111;
+END

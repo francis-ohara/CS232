@@ -1,0 +1,17 @@
+-- program memory file
+DEPTH = 256;
+WIDTH = 16;
+ADDRESS_RADIX = HEX;
+DATA_RADIX = BIN;
+CONTENT
+BEGIN
+00 : 1111100001000000; -- move 8 to RA
+01 : 1111100001000001; -- move 8 to RB
+02 : 1111100001000010; -- move 8 to RC
+03 : 1111100000001011; -- move 1 to RD
+04 : 1111100000010100; -- move 2 to RE
+05 : 1000011100000000; -- RA = RD + RE
+06 : 1001011100000001; -- RB = RD - RE
+07 : 0010000000000000; -- jump to instruction 0
+[08..FF] : 1111111111111111;  -- fill A0 to A1 with all 1s
+END

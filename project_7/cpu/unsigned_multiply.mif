@@ -1,0 +1,26 @@
+-- CS232 Project 7
+-- Francis O'Hara
+-- Spring 2025
+
+-- program memory file for unsigned multiplication program.
+-- The program stored on this memory file computes the product of 3 and 5 through repeated addition.
+
+DEPTH = 256;
+WIDTH = 16;
+ADDRESS_RADIX = HEX;
+DATA_RADIX = BIN;
+CONTENT
+BEGIN
+00 : 1111100000011000; -- move 3 to RA (first operand in multiplication)
+01 : 1111100000101001; -- move 5 to RB (second operand in multiplication; also used as loop variable for repeated addition)
+02 : 1111100000001010; -- move 1 to RC (for decrementing loop variable)
+03 : 1111100000000011; -- move 0 to RD (variable for storing total sum)
+-- loop body begins
+04 : 1000000011000011; -- add RA and RD and store result in RD (repeated addition step)
+05 : 1001001010000001; -- subtract RC (1) from RB and store result in RB (decrement loop variable)
+06 : 0011000000001000; -- conditional branch to address 08 (end of program) if RB (loop variable) is 0
+07 : 0010000000000100; -- unconditional branch to address 04 (beginning of loop body)
+-- loop body ends
+08 : 0011110000000000; -- halt
+[09..FF] : 1111111111111111;    -- fill remaining address locations with all 1s
+END
