@@ -1,0 +1,9 @@
+start:
+movei 8 RA
+movei 8 RB
+movei 8 RC
+movei 1 RD
+movei 2 RE
+add RD RE RA
+sub RD RE RB
+BRA start
