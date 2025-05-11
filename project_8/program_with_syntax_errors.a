@@ -1,0 +1,25 @@
+# invalid 8-bit two's complement number
+# movei 128 RA
+
+# invalid register RF
+# move RF RB
+
+# invalid number of operands for load instruction
+# load RD 8 RC
+
+
+movei 1 RE
+
+# invalid label
+# loop?:
+loop:
+add RA RB RC
+move RB RA
+move RC RB
+sub RD RE RD
+braz end
+bra loop
+
+end:
+# invalid number of arguments for halt instruction
+halt 34
