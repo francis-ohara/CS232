@@ -1,0 +1,15 @@
+movei 4 RA      # move 4 to RA (RA stores value of N)
+movei 0 RB      # move 0 to RB (RB stores total sum from 1 to N)
+movei 1 RC      # move 1 to RC  (constant variable with value 1 for decrementing RA)
+call function   # call the function stored at label function
+halt            # end the program
+
+# beginning of function body
+function:
+add RA RB RB    # sum RA and RB and store in RB
+sub RA RC RA    # decrement RA by 1
+braz end        # jump to return instruction if RA is 0 (base case of recursive function)
+call function   # call the function again (recursive case)
+
+end:
+return          # return program execution to line after function call instruction
