@@ -1,0 +1,19 @@
+movei 0 RA      # move 0 to RA
+movei 1 RB      # move 1 to RB
+movei 8 RD      # move 8 to RD (loop counter variable)
+movei 1 RE      # move 1 to RE (constant variable with value 1 for decrementing loop counter)
+
+# loop body begins
+loop:
+add RA RB RC    # add RA to RB and store in RC
+move RB RA      # move RB to RA
+move RC RB      # move RC to RB
+sub RD RE RD    # decrement RD by 1
+
+# loop body ends
+braz end    # conditional branch to end label
+bra loop    # unconditional branch to loop label
+
+
+end:
+halt
